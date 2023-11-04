@@ -55,7 +55,7 @@ WHY CSS
 }
 
 /* why card title */
-.highlight[data-astro-cid-j7pv25f6] {
+.highlight {
   font-weight: 400;
   z-index: 5;
   position: relative;
@@ -64,7 +64,7 @@ WHY CSS
   justify-content: flex-end;
 }
 
-.highlight[data-astro-cid-j7pv25f6]:before {
+.highlight:before {
   content: "";
   height: var(--before-height, 50%);
   /* height: 50%; */
