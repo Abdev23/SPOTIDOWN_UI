@@ -68,6 +68,11 @@ const NavBar = () => {
             >
               English
             </a>
+            <a href='/sp'
+               className='menu-item-mobile'
+            >
+              Spanish
+            </a>
             <a href='/fr'
                className='menu-item-mobile'
             >

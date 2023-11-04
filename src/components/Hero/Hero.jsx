@@ -25,7 +25,7 @@ const Hero = () => {
 						Albums
           </span>
 					<br />
-					&nbsp;&amp;&nbsp;
+					&amp;&nbsp;
 					<span className='font-effect'>
 						Playlists
           </span>
