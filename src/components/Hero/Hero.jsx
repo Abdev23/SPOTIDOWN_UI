@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TfiMouse } from 'react-icons/tfi';
+import { CgMouse } from 'react-icons/cg';
 
 import './Hero.css';
 
@@ -12,7 +12,7 @@ const Hero = () => {
         <a href='/announcement'
            className='latest'
         >
-          ✨ New: Linkedin clone, and more →
+        	✨ New: Linkedin clone, and more →
         </a>
         <h1>
 					Explore Sounds:
@@ -36,7 +36,7 @@ const Hero = () => {
 					Effortless Music Discovery - Ready to Explore?
 					<br />Find your musical insights with the search bar below.
         </h5>
-        
+
         <div className='hero-cta'>
           <a href='/get-started'
             className='primary-button primary-text-contrast highlight-toolbar'
@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
 
         <div className='hero-scroll'>
-					<TfiMouse size={35} />
+					<CgMouse size={34} />
           <p>
 						Scroll below to discover more.
           </p>
