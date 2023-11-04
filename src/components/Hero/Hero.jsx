@@ -4,7 +4,7 @@ import { CgMouse } from 'react-icons/cg';
 
 import './Hero.css';
 
-// fix the tab spacing.
+// fix the tab spacing
 const Hero = () => {
   return (
     <div className='hero' >
