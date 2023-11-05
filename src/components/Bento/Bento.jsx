@@ -14,10 +14,10 @@ const Bento = () => {
             style={{color: 'rgb(0, 0, 0)'}}
         >
           <h2>
-            180K+ Users
+            100M+ Tracks
           </h2>
           <span style={{fontSize: 'var(--p)', fontWeight: 'normal'}}>
-            and counting...
+            and still growing!
           </span>
         </li>
 
@@ -35,15 +35,15 @@ const Bento = () => {
         <li className='second-row-col1 text-color-box'>
           <span style={{fontWeight: 'bold', zIndex: '5'}}>
             <h4>
-              10K+ Plugin Users
+              On the Spot Metadata
             </h4>
           </span>
           <a className='link bento-link exclude'
              style={{fontSize: 'var(--p)', fontWeight: 'normal'}}
-             href='https://www.figma.com/community/plugin/1234060894101724457/Realtime-Colors'
-             target='_blank'  
+             href='https://developer.spotify.com/documentation/web-api'
+             target='_blank'
           >
-            Check it out on SpotiDown
+            Spotify Web API
           </a>
           <svg className='spotify-icon'
                width='335' height='472'
@@ -78,15 +78,14 @@ const Bento = () => {
         >
           <span style={{fontWeight: 'bold'}}>
             <h4>
-              180+ ProductHunt Upvotes
+              7M+ Artists
             </h4>
           </span>
           <a className='link bento-link exclude blue-bento-box'
              style={{fontSize: 'var(--p)', fontWeight: 'normal'}}
-             href='https://www.producthunt.com/products/real-time-colors'
-             target='_blank'
+             href='#search'
           >
-            Leave a review
+            Check it out on SpotiDown
           </a>
         </li>
       </ul>

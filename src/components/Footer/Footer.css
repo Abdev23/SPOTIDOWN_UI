@@ -29,7 +29,7 @@ FOOTER CSS
 }
 
 @media screen and (max-width: 1000px) {
-  .footer {
+  .footer-container {
     padding: 3em;
   }
 }
