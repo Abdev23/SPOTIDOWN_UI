@@ -4,6 +4,7 @@ import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import Why from '../../components/Why/Why';
 import Bento from '../../components/Bento/Bento';
+import Instructions from '../../components/Instructions/Instructions';
 import './Home.css';
 
 
@@ -15,6 +16,7 @@ const Home = () => {
 				<Hero />
 				<Why />
         <Bento />
+        <Instructions />
       </main>
     </div>
   )
