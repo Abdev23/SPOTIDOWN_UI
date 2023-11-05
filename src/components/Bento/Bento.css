@@ -101,15 +101,15 @@ BENTO CSS
 /* fourth bento box icon */
 .spotify-icon {
   position: absolute;
-  left: -120px;
+  left: -100px;
   height: 120%;
-  opacity: 30%;
+  opacity: 70%;
 }
 
 @media screen and (max-width: 1000px) {
   .spotify-icon {
-    left: -140px!important;
-    height: 70%!important;
+    left: -100px !important;
+    height: 70% !important;
     top: 50%;
   }
 }
