@@ -50,8 +50,8 @@ const Bento = () => {
           <BsSpotify className='spotify-icon'
                      size={180}
                      fill='var(--primary)'
-                    //  stroke='var(--bg)'
-                    //  strokeWidth={20}
+                    //stroke='var(--bg)'
+                    //strokeWidth={20}
           />
         </li>
 
