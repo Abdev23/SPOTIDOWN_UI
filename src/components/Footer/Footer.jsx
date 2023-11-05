@@ -7,8 +7,8 @@ import Favicon from '../../assets/favicon.png';
 const Footer = () => {
 
   return (
-    <main>
-      <div className='footer'
+    <div className='footer'>
+      <div className='footer-container'
            id='footer'
       >
         <div className='logo'>
@@ -27,15 +27,16 @@ const Footer = () => {
             </p>
 
             <div className='btn-container'>
-              <a title='Support me on ko-fi.com' className='kofi-button'
+              <a className='support-button'
+                 title='Support Dev'
                  style={{backgroundColor: 'rgb(26, 26, 26)'}}
                  href='/support-dev'
                  target='_blank'
               >
-                <span className='kofitext'>
-                <img className='kofiimg'
-                     src='https://storage.ko-fi.com/cdn/cup-border.png'
-                     alt='Ko-fi donations'
+                <span className='support-text'>
+                <img className='support-img'
+                     src={Favicon}
+                     alt='Support Dev'
                 />
                   Support Dev
                 </span>
@@ -140,7 +141,7 @@ const Footer = () => {
           </small>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
 

@@ -8,6 +8,16 @@ FOOTER CSS
 .footer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8em;
+  margin: 6rem 0;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 2em;
   border-radius: 10px;
@@ -73,8 +83,8 @@ FOOTER CSS
   }
 }
 
-/* koffi support icon */
-img.kofiimg {
+/* support icon */
+img.support-img {
   display: initial !important;
   vertical-align: middle;
   height: 13px !important;
@@ -86,10 +96,10 @@ img.kofiimg {
   margin-right: 5px !important;
   margin-left: 0 !important;
   margin-bottom: 3px !important;
-  content: url('https://storage.ko-fi.com/cdn/cup-border.png')
+  content: url('../../assets/favicon.png');
 }
 
-.kofiimg:after {
+.support-img:after {
   vertical-align: middle;
   height: 25px;
   padding-top: 0;
@@ -99,7 +109,7 @@ img.kofiimg {
   margin-right: 6px;
   margin-left: 0;
   margin-bottom: 4px !important;
-  content: url('https://storage.ko-fi.com/cdn/whitelogo.svg')
+  content: url('../../assets/favicon.png');
 }
 
 .btn-container{
@@ -108,7 +118,7 @@ img.kofiimg {
   min-width: 160px
 }
 
-span.kofitext {
+span.support-text {
   color:#fff !important;
   letter-spacing: -0.15px !important;
   text-wrap: none;
@@ -120,17 +130,17 @@ span.kofitext {
   text-shadow: 0 1px 1px rgba(34, 34, 34, 0.05);
 }
 
-.kofitext a {
+.support-text a {
   color:#fff !important;
   text-decoration: none !important;
 }
 
-.kofitext a:hover {
+.support-text a:hover {
   color:#fff !important;
   text-decoration: none
 }
 
-a.kofi-button{
+a.support-button{
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
   line-height: 36px !important;
   min-width: 150px;
@@ -151,30 +161,30 @@ a.kofi-button{
   font-size: 14px !important
 }
 
-a.kofi-button:visited {
+a.support-button:visited {
   color:#fff !important;
   text-decoration: none !important
 }
 
-a.kofi-button:hover {
+a.support-button:hover {
   opacity: .85;
   color:#f5f5f5 !important;
   text-decoration: none !important
 }
 
-a.kofi-button:active {
+a.support-button:active {
   color:#f5f5f5 !important;
   text-decoration: none !important
 }
 
-.kofitext img.kofiimg {
-  height: 15px !important;
+.support-text img.support-img {
+  height: 22px !important;
   width: 22px !important;
   display: initial;
-  animation: kofi-wiggle 3s infinite;
+  animation: support-wiggle 3s infinite;
 }
 
-@keyframes kofi-wiggle {
+@keyframes support-wiggle {
   0% {
     transform: rotate(0) scale(1);
   }
