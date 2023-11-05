@@ -194,10 +194,54 @@ button {
   color: var(--static2);
 }
 
+/* root div */
 #root {
   display: contents;
 }
 
+/* app div */
 .app {
   display: contents;
+}
+
+/* buttons */
+.primary-button {
+  padding: 0.5em 2em;
+  background-color: var(--primary);
+  color: var(--bg);
+  border-radius: 6px;
+  transition: transform ease 0.2s, box-shadow ease 0.2s;
+  display: inline-block;
+  font-size: var(--p);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.primary-button:hover {
+  transform: translate(0, -3px);
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+.secondary-button {
+  padding: 0.5em 2em;
+  background-color: var(--secondary);
+  color: var(--text);
+  border-radius: 6px;
+  display: inline-block;
+  font-size: var(--p);
+  z-index: 1;
+  cursor: pointer;
+  transition: transform ease 0.2s;
+  white-space: nowrap;
+}
+
+.secondary-button:hover {
+  transform: translate(0, -3px);
+  transition: transform ease 0.2s;
+}
+
+@media screen and (max-width: 1000px) {
+  .primary-button, .secondary-button {
+    text-align: center;
+  }
 }
