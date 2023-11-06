@@ -2,6 +2,10 @@
 
 SpotiDown is a web application that uses the Spotify API to fetch music metadata. It features a clean and simple user interface, supports dark/light mode, and many features to come in the future.
 
+## Live Preview
+
+- [SpotiDown_UI](https://spotidownui.netlify.app)
+
 ## Features
 
 - **Spotify API Integration:** SpotiDown uses the Spotify API to fetch music metadata, including track information, artists, and album details.
