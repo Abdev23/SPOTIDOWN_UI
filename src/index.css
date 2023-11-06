@@ -16,8 +16,8 @@ ROOT CSS
   --accent: #0c72ed;
   --static: rgba(225, 225, 225, 0.5);
   --static2: #0f0f0f;
-  --static4: rgba(225, 225, 225, 0.2);
   --static3: rgb(255, 255, 255);
+  --static4: rgba(225, 225, 225, 0.2);
   --static5: rgb(24, 172, 122);
   --static6: rgba(0, 0, 0, 0.05);
   --static7: rgba(0, 0, 0, 0.1);
@@ -45,8 +45,8 @@ ROOT CSS
   --accent: #1277f3;
   --static: rgba(0, 0, 0, 0.5);
   --static2: #f0f0f0;
-  --static4: rgba(225, 225, 225, 0.2);
   --static3: rgb(22, 22, 22);
+  --static4: rgba(225, 225, 225, 0.2);
   --static5: rgb(24, 172, 122);
   --static6: rgba(255, 255, 255, 0.15);
   --static7: rgba(255, 255, 255, 0.1);
@@ -75,6 +75,9 @@ ROOT CSS
   --small: calc(var(--p) / var(--font-scale));
   --margin-lg: 0 12%;
   --margin-md: 0 12%;                                     /* fixed the 12%  for the page margin width*/
+
+  --black: #000000;
+  --white: #ffffff;
 }
 
 @supports (font-variation-settings: normal) {
