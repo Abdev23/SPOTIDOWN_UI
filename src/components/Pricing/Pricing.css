@@ -87,7 +87,7 @@ PRICING CSS
   text-align: center;
 }
 
-/* pricing list */
+/* pricing card list */
 .pricing-list {
   display: flex;
   flex-direction: column;
