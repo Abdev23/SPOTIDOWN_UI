@@ -102,6 +102,7 @@ TESTIMONIALS CSS
   align-self: flex-start;
 }
 
+/* testimonials card reviewers icon */
 .reviewer-icon {
   position: absolute;
   top: 50%;

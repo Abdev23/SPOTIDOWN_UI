@@ -10,7 +10,7 @@ import './Testimonials.css';
 
 
 const Testimonials = () => {
-  const [stars, setStars] = useState([5, 3.5, 4.5]);
+  const [stars_nbr, setStars_nbr] = useState([5, 3.5, 4.5]);
 
   const renderStars = (stars_nbr) => {
     const starElements = [];
@@ -45,21 +45,21 @@ const Testimonials = () => {
               <FaUserAlt className='reviewer-icon' size={40} fill='var(--black)' />
             </div>
             <div className='reviewer-name'>
-              Cool User
+              @CodeMaster
               <br />
               <span style={{opacity: '0.5'}}>
-                Product Designer
+                Software Engineer
               </span>
             </div>
           </div>
 
           <div className='rating'>
           {
-            renderStars(stars[0])
+            renderStars(stars_nbr[0])
           }
           </div>
           <p className='review'>
-            "Wow! I love this site. Realtime Colors is all websites at the same time."
+            "Spotidown fuels my creativity. Spotify data in real-time? It's a songwriter's dream."
           </p>
         </div>
 
@@ -69,21 +69,22 @@ const Testimonials = () => {
               <FaUserAlt className='reviewer-icon' size={40} fill='var(--black)' />
             </div>
             <div className='reviewer-name'>
-              Creative Person
+              @MelodyExplorer
               <br />
               <span style={{opacity: '0.5'}}>
-                Product Owner
+                Music Blogger
               </span>
             </div>
           </div>
 
           <div className='rating'>
           {
-            renderStars(stars[1])
+            renderStars(stars_nbr[1])
           }
           </div>
           <p className='review'>
-            "Amazing. I found my favorite colors in literally... 2 minutes? Woah! Totally real review."
+            "I'm constantly amazed by Spotidown's efficiency. It fetches data from Spotify's web
+            API flawlessly, allowing me to explore a world of melodies effortlessly."
           </p>
         </div>
 
@@ -93,21 +94,22 @@ const Testimonials = () => {
               <FaUserAlt className='reviewer-icon' size={40} fill='var(--black)' />
             </div>
             <div className='reviewer-name'>
-              Real Reviewer
+              @GameWizard
               <br />
               <span style={{opacity: '0.5'}}>
-                Developer
+                Game Developer
               </span>
             </div>
           </div>
 
           <div className='rating'>
           {
-            renderStars(stars[2])
+            renderStars(stars_nbr[2])
           }
           </div>
           <p className='review'>
-            "Astonished. This product is so cool. You should try it and upgrade to Enterprise plan. No kidding."
+            "Spotidown is a game-changer for audio professionals. Its accurate data fetching and
+            real-time updates ensure I always have the latest information at my fingertips."
           </p>
         </div>
       </div>
