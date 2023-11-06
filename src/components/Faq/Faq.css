@@ -5,6 +5,7 @@ FAQ CSS
 =======
 */
 
+/* faq container */
 .faq-section {
   display: flex;
   flex-direction: row;
