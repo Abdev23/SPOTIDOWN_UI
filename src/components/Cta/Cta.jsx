@@ -10,23 +10,21 @@ const Cta = () => {
          id='cta'
     >
       <h2>
-        Your
-        <span className='color-effect'>
-          Journey
-        </span>
-        Shouldn't End Here.
+        Keep
+        <span className='color-effect'> Exploring </span>
+        Beyond This Point.
       </h2>
 
       <h5>
-        Follow me on social media to stay tuned on more projects.
+        Follow me for more updates!
       </h5>
 
       <a className='primary-button primary-text-contrast exclude'
-         href='https://twitter.com/juxtopposed'
+         href='https://twitter.com/AbdelhamidMa23'
          target='_blank'
          style={{color: 'rgb(0, 0, 0)'}}
       >
-        Stay Tuned
+        Explore More
       </a>
     </div>
   );
