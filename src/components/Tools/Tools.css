@@ -1,10 +1,11 @@
 
 /*
-=====================
-FEATURED-ARTICLES CSS
-=====================
+=========
+TOOLS CSS
+=========
 */
 
+/* Tools container */
 .section.column {
   width: 100%;
   display: flex;
@@ -14,6 +15,7 @@ FEATURED-ARTICLES CSS
   align-items: center;
 }
 
+/* Tools header section */
 .part-heading {
   display: flex;
   flex-direction: column;
@@ -28,6 +30,7 @@ FEATURED-ARTICLES CSS
   text-align: center;
 }
 
+/* tools cards */
 .section-cards {
   display: flex;
   flex-direction: row;
@@ -42,21 +45,21 @@ FEATURED-ARTICLES CSS
   }
 }
 
-.featured-col {
+.tools-col {
   flex-wrap: wrap;
   width: 100%;
   gap: 2em;
 }
 
-.doc-item {
+.tool-item {
   position: relative;
 }
 
-.doc-item.main-page {
+.tool-item.main-page {
   width: 30%;
 }
 
-.doc-link {
+.tool-link {
   padding: 1em;
   display: block;
   width: 100%;
@@ -67,7 +70,7 @@ FEATURED-ARTICLES CSS
   justify-content: center;
 }
 
-.col1-doc-link-bg {
+.col1-tool-link-bg {
   width: 100%;
   height: 100%;
   background-color: var(--primary);
@@ -80,18 +83,18 @@ FEATURED-ARTICLES CSS
   transition: opacity 0.3s ease;
 }
 
-.doc-item:hover > .col1-doc-link-bg {
+.tool-item:hover > .col1-tool-link-bg {
   opacity: 20%;
   transition: opacity 0.3s ease;
 }
 
-.doc-item:hover > .col2-doc-link-bg {
+.tool-item:hover > .col2-tool-link-bg {
   opacity: 10%;
   transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 1000px) {
-  .doc-item.main-page {
+  .tool-item.main-page {
       width: 100% !important;
   }
 }

@@ -8,7 +8,7 @@ import Instructions from '../../components/Instructions/Instructions';
 import Pricing from '../../components/Pricing/Pricing';
 import Testimonials from '../../components/Testimonials/Testimonials';
 import Faq from '../../components/Faq/Faq';
-import FeaturedArticles from '../../components/FeaturedArticles/FeaturedArticles';
+import Tools from '../../components/Tools/Tools';
 import Cta from '../../components/Cta/Cta';
 import './Home.css';
 
@@ -25,7 +25,7 @@ const Home = () => {
         <Pricing />
         <Testimonials />
         <Faq />
-        <FeaturedArticles />
+        <Tools />
         {/* <Cta /> */}
       </main>
     </div>
