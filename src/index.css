@@ -6,9 +6,6 @@ ROOT CSS
 */
 
 :root[data-theme="light"] {
-  /* --text: #050315; */
-  /* --bg: #fbfbfe; */
-
   --text: #000000;
   --bg: #ffffff;
   --primary: #28e269;
@@ -32,12 +29,16 @@ ROOT CSS
   --primarycontrast: #64d97b;
   --secondarycontrast: #64d97b;
   --accentcontrast: #64d97b;
+
+  --error: #D74242;
+  --warning: #EF7918;
+  --success: #418944;
+  --error-bg: #FDEDED;
+  --warning-bg: #FFF4E5;
+  --success-bg: #EDF7ED;
 }
 
 :root[data-theme="dark"] {
-  /* --text: #fbfbfe; */
-  /* --bg: #050315; */
-
   --text: #ffffff;
   --bg: #000000;
   --primary: #1dd75e;
@@ -61,6 +62,13 @@ ROOT CSS
   --primarycontrast: #64d97b;
   --secondarycontrast: #64d97b;
   --accentcontrast: #64d97b;
+
+  --error: #DE3E32;
+  --warning: #E89823;
+  --success: #5DAB61;
+  --error-bg: #160B0B;
+  --warning-bg: #191207;
+  --success-bg: #0C130D;
 }
 
 :root {
@@ -78,6 +86,8 @@ ROOT CSS
 
   --black: #000000;
   --white: #ffffff;
+  --alert: #F44336;
+  --warning: 
 }
 
 @supports (font-variation-settings: normal) {

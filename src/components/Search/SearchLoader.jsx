@@ -6,7 +6,7 @@ import './Search.css';
 
 const SearchLoader = () => {
   return (
-    <div className='search-loader-container'>
+    <>
       <svg className='loader-1'
            xmlns='http://www.w3.org/2000/svg'
            x='0px' y='0px'
@@ -26,7 +26,7 @@ const SearchLoader = () => {
         <rect x='27' y='27' fill='var(--primary)' width='46' height='50'>
           <animate id='rectBox'
                    attributeName='height' attributeType='XML'
-                   begin='0s;strokeBox.end' dur='1.3s'
+                   begin='0s;strokeBox.end' dur='0.7s'
                    from='50' to='0'
                    fill='freeze'
           />
@@ -89,7 +89,7 @@ const SearchLoader = () => {
           />
         </rect>
       </svg> */}
-    </div>
+    </>
   );
 }
 

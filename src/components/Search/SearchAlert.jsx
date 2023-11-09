@@ -1,14 +1,22 @@
 
 import React from 'react';
+import {
+  MdErrorOutline,
+  MdWarningAmber,
+  MdCheckCircle
+} from 'react-icons/md';
 
 import './Search.css';
 
 
 const SearchAlert = () => {
   return (
-    <div className='search-alert'>
-      Notification Alert
-    </div>
+    <small>
+      <p>
+        <MdWarningAmber className='search-alert-icon' />
+        Notification Alert
+      </p>
+    </small>
   );
 }
 

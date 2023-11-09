@@ -13,7 +13,7 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
 
   // handle search button
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log('handleSubmit function called');
 
@@ -118,20 +118,18 @@ const Search = () => {
 
   return (
     <div className='search'
-         id='search'
+      id='search'
     >
-      <form className='search-form'
-            onSubmit={handleSubmit}
-      >
-        <h2>
-          Input Link or Keyword
-        </h2>
+      <h2>
+        Input Link or Keyword
+      </h2>
 
-        <div className='search-form-container'>
-          <BiSearch className='search-icon' />
+      <div className='search-row'>
+        <div className='search-input-cont'>
           <input className='search-input'
+                 id='search-input'
                  type='text'
-                 placeholder='https://open.spotify.com/track/....'
+                 placeholder='e.g. https://open.spotify.com/track/....'
                  value={search}
                  onKeyPress={ (e) => {
                   if(e.key == 'Enter')
@@ -141,16 +139,27 @@ const Search = () => {
                     e.target.value = '';
                   }
                  }}
-                 onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
           />
-          <button className='search-button secondary-button secondary-text-contrast'
-                  type='submit'
-                  onClick={(e) => handleSearch(e)}
-          >
-            Search
-          </button>
         </div>
-      </form>
+
+        <div className='search-separator'></div>
+        
+        <button className='search-button'
+                id='search-button'
+                type='submit'
+                onClick={(e) => handleSearch(e)}
+        >
+          <BiSearch className='search-icon' />
+          Search
+        </button>
+      </div>
+
+      <div className='search-alert'
+          //  style={{display: 'none'}}
+      >
+        <SearchAlert />
+      </div>
 
       <div className='search-loader'>
       {

@@ -6,55 +6,130 @@ SEARCH CSS
 */
 
 .search {
-  background: var(--accent);
-  padding: 5rem;
+  margin: 20px;
+  min-width: 260px!important;
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  background-color: var(--static3);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px 1px #0000001a, 0 0 0 1px #0000001a;
+  cursor: auto;
 }
 
-.search-form-container {
+.search-row {
   display: flex;
-  line-height: 28px;
-  align-items: center;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.search-input-cont {
   position: relative;
-  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 9;
 }
 
 .search-input {
+  font-size: var(--p);
+  border: 1px solid var(--static8);
+  border-radius: 10px;
+  background-color: transparent;
+  color: currentColor;
+  outline: none;
   width: 100%;
-  height: 40px;
-  line-height: 28px;
-  padding: 0 1rem;
-  padding-left: 2.5rem;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  outline: none;
-  background-color: var(--text);
-  color: #0d0c22;
-  transition: .3s ease;
-  margin: 10px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 1em;
+  height: 60px;
 }
 
-.search-input::placeholder {
-  color: var(--secondary);
-  opacity: 0.6;
+.search-input:hover {
+  background-color: var(--static8);
 }
 
-.search-input:focus, .search-input:hover {
-  outline: none;
-  border-color: var(--primary);
-  background-color: var(--text);
-  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
-}
-
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  fill: var(--secondary);
-  opacity: 0.6;
-  width: 1.3rem;
-  height: 1.3rem;
+.search-separator {
+  background-color: var(--static7);
+  width: 2px;
+  height: 60px;
 }
 
 .search-button {
-  height: 40px;
+  font-size: var(--p);
+  color: var(--static2);
+  background-color: var(--static6);
+  padding: 1em 1em;
+  gap: 0.1em;
+  border-radius: 6px;
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.search-button:hover {
+  background-color: var(--static7);
+  transform: translate(0, -3px);
+  transition: transform ease 0.2s;
+}
+
+.search-button > .search-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+
+/*
+=================
+SEARCH-LOADER CSS
+=================
+*/
+
+.search-loader {
+  display: block;
+}
+
+.loader-1 {
+  width: 100px;
+  height: 100px;
+}
+
+
+/*
+================
+SEARCH-ALERT CSS
+================
+*/
+
+.search-alert {
+  background-color: var(--error-bg);
+  color: var(--error);
+  border-radius: 6px;
+  width: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.search-alert .search-alert-icon {
+  vertical-align: middle;
+  margin-right: 8px;
 }
