@@ -3,6 +3,7 @@ import React from 'react';
 
 import Hero from '../../components/Hero/Hero';
 import Why from '../../components/Why/Why';
+import Search from '../../components/Search/Search';
 import Bento from '../../components/Bento/Bento';
 import Instructions from '../../components/Instructions/Instructions';
 import Pricing from '../../components/Pricing/Pricing';
@@ -20,6 +21,7 @@ const Home = () => {
       <main> 
 				<Hero />
 				<Why />
+        <Search />
         <Bento />
         <Instructions />
         <Pricing />
