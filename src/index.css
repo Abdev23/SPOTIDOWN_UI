@@ -86,8 +86,6 @@ ROOT CSS
 
   --black: #000000;
   --white: #ffffff;
-  --alert: #F44336;
-  --warning: 
 }
 
 @supports (font-variation-settings: normal) {
