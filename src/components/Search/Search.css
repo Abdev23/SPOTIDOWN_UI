@@ -42,7 +42,7 @@ SEARCH CSS
 .search-input {
   font-size: var(--p);
   border: 1px solid var(--static8);
-  border-radius: 10px;
+  border-radius: 6px;
   background-color: transparent;
   color: currentColor;
   outline: none;
@@ -61,6 +61,7 @@ SEARCH CSS
   background-color: var(--static7);
   width: 2px;
   height: 60px;
+  border-radius: 2px;
 }
 
 .search-button {
@@ -118,15 +119,32 @@ SEARCH-ALERT CSS
 */
 
 .search-alert {
-  background-color: var(--error-bg);
-  color: var(--error);
+  display: none;
+}
+
+.search-alert.show {
   border-radius: 6px;
-  width: 50%;
+  width: 80%;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.search-alert.error {
+  background-color: var(--error-bg);
+  color: var(--error);
+}
+
+.search-alert.warning {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+}
+
+.search-alert.success {
+  background-color: var(--success-bg);
+  color: var(--success);
 }
 
 .search-alert .search-alert-icon {

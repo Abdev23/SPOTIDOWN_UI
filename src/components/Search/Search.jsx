@@ -11,6 +11,11 @@ const Search = () => {
   const [search, setSearch] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    msg: '',
+    type: '',
+    show: false
+  });
 
   // handle search button
   const handleSubmit = (e) => {
@@ -29,6 +34,11 @@ const Search = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     console.log('handleSearch function called');
+
+    if (!search) {
+      setAlert({ msg: 'Please enter a search query.', type: 'warning', show: true });
+      return;
+    }
   
     const searchParameters = {
       method: 'GET',
@@ -60,13 +70,15 @@ const Search = () => {
           const data = await queryData.json();
     
           if (data) {
-            setLoading(true);
+            setLoading(false);
+            setAlert({ msg: 'Founded some music for you!', type: 'success', show: true });
             console.log(data);
     
             return data;
           }
           else
           {
+            setAlert({ msg: 'No results found.', type: 'warning', show: true });
             throw new Error('Did not get the data');
           }
         }
@@ -78,10 +90,28 @@ const Search = () => {
       catch (err)
       {
         setLoading(false);
-        throw new Error('Oops! Unknown metadata error: ' + err.message);
+        let errorMessage = '';
+        if (err instanceof TypeError) {
+          errorMessage = 'Oops! Network error occurred. Please check your internet connection.';
+        } else {
+          errorMessage = 'Oops! Error occurred while fetching data. Please try again later.';
+        }
+        setAlert({ msg: errorMessage, type: 'error', show: true });
+        throw new Error('Oops! Error occurred while fetching data: ' + err.message);
       }
     }
   }
+
+  // reset the alert component to default state
+  useEffect( () => {
+    const resetAlert = setTimeout(() => {
+      setAlert({ msg: '', type: '', show: false });
+    }, 5000);
+
+    return () => {
+      clearTimeout(resetAlert);
+    };
+  }, [alert])
 
   // get API access Token
   useEffect( () => {
@@ -105,10 +135,16 @@ const Search = () => {
         );
         const data = await response.json();
         setAccessToken(data.access_token);
-        console.log('access token: ', accessToken);
+        console.log('access token: ', data.access_token);
       }
       catch (err)
       {
+        setAccessToken('');
+        setAlert({
+          msg: 'OPPS! API CONNECTION ERROR',
+          type: 'error',
+          show: true
+        });
         throw new Error('OPPS! API CONNECTION ERROR: ' + err.message);
       }
     }
@@ -135,8 +171,8 @@ const Search = () => {
                   if(e.key == 'Enter')
                   {
                     handleSearch(e);
+                    setSearch('');
                     e.target.blur();
-                    e.target.value = '';
                   }
                  }}
                 onChange={(e) => setSearch(e.target.value)}
@@ -155,16 +191,16 @@ const Search = () => {
         </button>
       </div>
 
-      <div className='search-alert'
-          //  style={{display: 'none'}}
-      >
-        <SearchAlert />
+      <div className={`search-alert ${alert.show ? 'show' : ''} ${alert.type}`}>
+        {
+          alert.show && <SearchAlert message={alert.msg} type={alert.type} />
+        }
       </div>
 
       <div className='search-loader'>
-      {
-        loading && <SearchLoader />
-      }
+        {
+          loading && <SearchLoader />
+        }
       </div>
       
       <div className='search-cards-container'>
