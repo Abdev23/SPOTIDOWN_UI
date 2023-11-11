@@ -33,9 +33,11 @@ ROOT CSS
   --error: #D74242;
   --warning: #EF7918;
   --success: #418944;
+  --info: #1893D5;
   --error-bg: #FDEDED;
   --warning-bg: #FFF4E5;
   --success-bg: #EDF7ED;
+  --info-bg: #E5F6FD;
 }
 
 :root[data-theme="dark"] {
@@ -66,9 +68,11 @@ ROOT CSS
   --error: #DE3E32;
   --warning: #E89823;
   --success: #5DAB61;
+  --info: #26A6E0;
   --error-bg: #160B0B;
   --warning-bg: #191207;
   --success-bg: #0C130D;
+  --info-bg: #071318;
 }
 
 :root {
