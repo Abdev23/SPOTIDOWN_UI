@@ -1,10 +1,11 @@
 
 import React from 'react';
 import {
-  MdErrorOutline,
-  MdWarningAmber,
-  MdCheckCircle
-} from 'react-icons/md';
+  IoCloseCircleOutline,
+  IoWarningOutline,
+  IoCheckmarkCircleOutline,
+  IoInformationCircleOutline
+} from 'react-icons/io5';
 
 import './Search.css';
 
@@ -14,11 +15,13 @@ const SearchAlert = ({ message, type }) => {
   const getIcon = () => {
     switch (type) {
       case 'error':
-        return <MdErrorOutline className='search-alert-icon' />;
+        return <IoCloseCircleOutline className='search-alert-icon' />;
       case 'warning':
-        return <MdWarningAmber className='search-alert-icon' />;
+        return <IoWarningOutline className='search-alert-icon' />;
       case 'success':
-        return <MdCheckCircle className='search-alert-icon' />;
+        return <IoCheckmarkCircleOutline className='search-alert-icon' />;
+      case 'info':
+        return <IoInformationCircleOutline className='search-alert-icon' />;
       default:
         return null;
     }

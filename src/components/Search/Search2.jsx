@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 import SearchLoader from './SearchLoader';
@@ -7,19 +7,7 @@ import SearchAlert from './SearchAlert';
 import './Search.css';
 
 
-const debounce = (fn, delay) => {
-  let timer;
-  return (...args) => {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      fn(...args);
-    }, delay);
-  };
-};
-
-const Search = () => {
+const Search2 = () => {
   const [search, setSearch] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,25 +16,24 @@ const Search = () => {
     type: '',
     show: false
   });
-
-  // handle search input
-  const debouncedHandleSearch = useCallback(debounce(async () => {
+  
+  // handle Search input
+  const handleSearch = async () => {
     if (!search)
     {
       setAlert({ msg: 'Please enter a search query.', type: 'warning', show: true });
-      setSearch('');
       return;
     }
 
     console.log('this is the search value: ', search);
-
+  
     const searchParameters = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + accessToken
       }
-    };
+    }
 
     setLoading(true);
 
@@ -66,19 +53,25 @@ const Search = () => {
         if (queryData.ok)
         {
           const data = await queryData.json();
-
-          if (data)
+    
+          if (data &&
+              (data.albums.items.length > 0 ||
+              data.artists.items.length > 0 ||
+              data.playlists.items.length > 0 ||
+              data.tracks.items.length > 0))
           {
             setLoading(false);
             setAlert({ msg: 'Founded some music for you!', type: 'success', show: true });
-            console.log(data);
-
+            setSearch('');
+            console.log('data is full: ', data);
+    
             return data;
           }
           else
           {
-            setAlert({ msg: 'No results found.', type: 'warning', show: true });
-            throw new Error('Did not get the data');
+            setLoading(false);
+            setAlert({ msg: 'No results found. Check your spelling.', type: 'info', show: true });
+            return;
           }
         }
         else
@@ -99,11 +92,7 @@ const Search = () => {
         throw new Error('Oops! Error occurred while fetching data: ' + err.message);
       }
     }
-  }), [search]);
-
-  useEffect(() => {
-    debouncedHandleSearch();
-  }, [search, debouncedHandleSearch]);
+  }
 
   // reset the alert component to default state
   useEffect( () => {
@@ -174,7 +163,7 @@ const Search = () => {
                   if(e.key == 'Enter')
                   {
                     handleSearch();
-                    setSearch('');
+                    // setSearch('');
                     e.target.blur();
                   }
                  }}
@@ -213,4 +202,4 @@ const Search = () => {
 }
 
 
-export default Search;
+export default Search2;

@@ -4,6 +4,7 @@ import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import Why from '../../components/Why/Why';
 import Search from '../../components/Search/Search';
+import Search2 from '../../components/Search/Search2';
 import Bento from '../../components/Bento/Bento';
 import Instructions from '../../components/Instructions/Instructions';
 import Pricing from '../../components/Pricing/Pricing';
@@ -21,7 +22,7 @@ const Home = () => {
       <main> 
 				<Hero />
 				<Why />
-        <Search />
+        <Search2 />
         <Bento />
         <Instructions />
         <Pricing />
