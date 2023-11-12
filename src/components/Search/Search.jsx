@@ -1,40 +1,116 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 import SearchLoader from './SearchLoader';
 import SearchAlert from './SearchAlert';
+import Card from '../Card/Card';
+import useConnect from '../../hooks/useConnect';
 import './Search.css';
 
 
-const debounce = (fn, delay) => {
-  let timer;
-  return (...args) => {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      fn(...args);
-    }, delay);
-  };
-};
-
-const Search = () => {
+const Search3 = () => {
   const [search, setSearch] = useState('');
-  const [accessToken, setAccessToken] = useState('');
+  const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
     msg: '',
     type: '',
     show: false
   });
+  const accessToken = useConnect(setAlert);
 
-  // handle search input
-  const debouncedHandleSearch = useCallback(debounce(async () => {
+  const handleSearchResults = (data) => {
+    if (data &&
+        (data.albums.items.length > 0 ||
+        data.artists.items.length > 0 ||
+        data.playlists.items.length > 0 ||
+        data.tracks.items.length > 0))
+    {
+      setLoading(false);
+      setAlert({ msg: 'Found some music for you!', type: 'success', show: true });
+      console.log('data is full: ', data);
+      
+      // Update the logic to handle the search results as needed
+      setMetadata(data);
+      return data;
+    }
+    else
+    {
+      setLoading(false);
+      setAlert({ msg: 'No results found. Check your spelling.', type: 'info', show: true });
+      return;
+    }
+  };
+
+  const handleSearchError = (err) => {
+    setLoading(false);
+    let errorMessage = '';
+    if (err instanceof TypeError)
+    {
+      errorMessage = 'Oops! Network error occurred. Please check your internet connection.';
+    }
+    else
+    {
+      errorMessage = 'Oops! Error occurred while fetching data. Please try again later.';
+    }
+    setAlert({ msg: errorMessage, type: 'error', show: true });
+    console.error(err);
+    throw new Error('Oops! Error occurred while fetching data: ' + err.message);
+  };
+
+  const getLinkType = (link) => {
+    if (link.includes('https://open.spotify.com/track/'))
+      return 'track';
+    else if (link.includes('https://open.spotify.com/album/'))
+      return 'album';
+    else if (link.includes('https://open.spotify.com/playlist/'))
+      return 'playlist';
+    else if (link.includes('https://open.spotify.com/artist/'))
+      return 'artist';
+    else
+    {
+      throw new Error('Invalid Spotify link');
+    }
+  };
+
+  const getLinkId = (link) => {
+    const parts = link.split('/');
+    return parts[parts.length - 1];
+  };
+
+  const fetchAPIData = async (base, searchParameters) => {
+    let link = '';
+    if (base.includes('https://open.spotify.com/'))
+    {
+      // Handle Spotify link
+      const linkType = getLinkType(base);
+      link += `https://api.spotify.com/v1/${linkType}s/${getLinkId(base)}`
+    }
+    else
+    {
+      // Handle Spotify keyword
+      link += `https://api.spotify.com/v1/search?q=${base}&type=album,artist,playlist,track`;
+    }
+    
+    console.log('the spotify search base is: ', link);
+    const response = await fetch(link, searchParameters);
+    if (response.ok)
+    {
+      return await response.json();
+    }
+    else
+    {
+      throw new Error('Failed to fetch data from Spotify API');
+    }
+  }
+
+  // handle Search input
+  const handleSearch = async () => {
     if (!search)
     {
       setAlert({ msg: 'Please enter a search query.', type: 'warning', show: true });
-      setSearch('');
+      setMetadata(null);
       return;
     }
 
@@ -50,62 +126,18 @@ const Search = () => {
 
     setLoading(true);
 
-    // check if the input text is a link or keyword
-    if (search.includes('https://open.spotify.com/'))
+    try
     {
-      return;
+      const data = await fetchAPIData(search, searchParameters);
+      handleSearchResults(data);
     }
-    else
+    catch (err)
     {
-      try
-      {
-        const queryData = await fetch(
-          'https://api.spotify.com/v1/search?q=' + search + '&type=album,artist,playlist,track',
-          searchParameters
-        );
-        if (queryData.ok)
-        {
-          const data = await queryData.json();
-
-          if (data)
-          {
-            setLoading(false);
-            setAlert({ msg: 'Founded some music for you!', type: 'success', show: true });
-            console.log(data);
-
-            return data;
-          }
-          else
-          {
-            setAlert({ msg: 'No results found.', type: 'warning', show: true });
-            throw new Error('Did not get the data');
-          }
-        }
-        else
-        {
-          throw new Error('Failed to fetch data from Spotify API');
-        }
-      }
-      catch (err)
-      {
-        setLoading(false);
-        let errorMessage = '';
-        if (err instanceof TypeError) {
-          errorMessage = 'Oops! Network error occurred. Please check your internet connection.';
-        } else {
-          errorMessage = 'Oops! Error occurred while fetching data. Please try again later.';
-        }
-        setAlert({ msg: errorMessage, type: 'error', show: true });
-        throw new Error('Oops! Error occurred while fetching data: ' + err.message);
-      }
+      handleSearchError(err);
     }
-  }), [search]);
+  };
 
-  useEffect(() => {
-    debouncedHandleSearch();
-  }, [search, debouncedHandleSearch]);
-
-  // reset the alert component to default state
+  // reset the Alert to default state
   useEffect( () => {
     const resetAlert = setTimeout(() => {
       setAlert({ msg: '', type: '', show: false });
@@ -115,45 +147,6 @@ const Search = () => {
       clearTimeout(resetAlert);
     };
   }, [alert])
-
-  // get API access Token
-  useEffect( () => {
-    const authParameters = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: 'grant_type=client_credentials&client_id='
-            + import.meta.env.VITE_CLIENT_ID
-            + '&client_secret='
-            + import.meta.env.VITE_CLIENT_SECRET
-    }
-
-    const Connect = async () => {
-      try
-      {
-        const response = await fetch(
-          'https://accounts.spotify.com/api/token',
-          authParameters
-        );
-        const data = await response.json();
-        setAccessToken(data.access_token);
-        // console.log('access token: ', data.access_token);
-      }
-      catch (err)
-      {
-        setAccessToken('');
-        setAlert({
-          msg: 'OPPS! API CONNECTION ERROR',
-          type: 'error',
-          show: true
-        });
-        throw new Error('OPPS! API CONNECTION ERROR: ' + err.message);
-      }
-    }
-
-    Connect();
-  }, []);
 
   return (
     <div className='search'
@@ -178,7 +171,10 @@ const Search = () => {
                     e.target.blur();
                   }
                  }}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  handleSearch();
+                }}
           />
         </div>
 
@@ -186,7 +182,7 @@ const Search = () => {
         
         <button className='search-button'
                 id='search-button'
-                type='submit'
+                type='button'
                 onClick={handleSearch}
         >
           <BiSearch className='search-icon' />
@@ -207,10 +203,13 @@ const Search = () => {
       </div>
       
       <div className='search-cards-container'>
+        {
+          metadata && <Card metadata={metadata} />
+        }
       </div>
     </div>
   );
-}
+};
 
 
-export default Search;
+export default Search3;

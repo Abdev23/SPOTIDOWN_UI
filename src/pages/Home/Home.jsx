@@ -5,7 +5,6 @@ import Hero from '../../components/Hero/Hero';
 import Why from '../../components/Why/Why';
 import Search from '../../components/Search/Search';
 import Search2 from '../../components/Search/Search2';
-import Search3 from '../../components/Search/Search3';
 import Bento from '../../components/Bento/Bento';
 import Instructions from '../../components/Instructions/Instructions';
 import Pricing from '../../components/Pricing/Pricing';
@@ -23,7 +22,7 @@ const Home = () => {
       <main> 
 				<Hero />
 				<Why />
-        <Search3 />
+        <Search />
         <Bento />
         <Instructions />
         <Pricing />

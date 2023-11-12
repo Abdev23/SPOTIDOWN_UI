@@ -20,7 +20,7 @@ const Search2 = () => {
   });
   const accessToken = useConnect(setAlert);
   
-  // handle Search input
+  // Handle Search Input
   const handleSearch = async () => {
     if (!search)
     {
