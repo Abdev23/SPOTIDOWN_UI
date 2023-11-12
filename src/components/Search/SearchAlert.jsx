@@ -16,13 +16,13 @@ const SearchAlert = ({ message, type }) => {
   const getIcon = () => {
     switch (type) {
       case 'error':
-        return <IoCloseCircleOutline className='search-alert-icon' />;
+        return <IoCloseCircleOutline size={20} className='search-alert-icon' />;
       case 'warning':
-        return <IoWarningOutline className='search-alert-icon' />;
+        return <IoWarningOutline size={20} className='search-alert-icon' />;
       case 'success':
-        return <IoCheckmarkCircleOutline className='search-alert-icon' />;
+        return <IoCheckmarkCircleOutline size={20} className='search-alert-icon' />;
       case 'info':
-        return <IoInformationCircleOutline className='search-alert-icon' />;
+        return <IoInformationCircleOutline size={20} className='search-alert-icon' />;
       default:
         return null;
     }

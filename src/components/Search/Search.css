@@ -125,12 +125,13 @@ SEARCH-ALERT CSS
 
 .search-alert.show {
   border-radius: 6px;
-  width: 80%;
+  width: 90%;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 5px;
 }
 
 .search-alert.error {
@@ -155,5 +156,11 @@ SEARCH-ALERT CSS
 
 .search-alert .search-alert-icon {
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .search-alert.show {
+    height: 80px;
+  }
 }

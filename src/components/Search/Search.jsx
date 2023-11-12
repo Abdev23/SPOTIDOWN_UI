@@ -57,7 +57,7 @@ const Search3 = () => {
     }
     setAlert({ msg: errorMessage, type: 'error', show: true });
     console.error(err);
-    throw new Error('Oops! Error occurred while fetching data: ' + err.message);
+    throw new Error(errorMessage + err.message);
   };
 
   const getLinkType = (link) => {
