@@ -21,7 +21,7 @@ const Search3 = () => {
   const accessToken = useConnect(setAlert);
 
   const handleSearchResults = (data) => {
-    if (data &&
+    if (data ||
         (data.albums.items.length > 0 ||
         data.artists.items.length > 0 ||
         data.playlists.items.length > 0 ||
