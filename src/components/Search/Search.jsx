@@ -29,7 +29,7 @@ const Search3 = () => {
     {
       setLoading(false);
       setAlert({ msg: 'Found some music for you!', type: 'success', show: true });
-      console.log('data is full: ', data);
+      console.log('Data Exist: ', data);
       
       // Update the logic to handle the search results as needed
       setMetadata(data);
@@ -93,7 +93,6 @@ const Search3 = () => {
       link += `https://api.spotify.com/v1/search?q=${base}&type=album,artist,playlist,track`;
     }
     
-    console.log('the spotify search base is: ', link);
     const response = await fetch(link, searchParameters);
     if (response.ok)
     {
@@ -114,7 +113,7 @@ const Search3 = () => {
       return;
     }
 
-    console.log('this is the search value: ', search);
+    console.log('Query Search value: ', search);
 
     const searchParameters = {
       method: 'GET',

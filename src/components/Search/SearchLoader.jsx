@@ -27,8 +27,7 @@ const SearchLoader = () => {
           <animate id='rectBox'
                    attributeName='height' attributeType='XML'
                    begin='0s;strokeBox.end' dur='0.7s'
-                   from='50' to='0'
-                   fill='freeze'
+                   from='50' to='0' fill='freeze'
           />
         </rect>
       </svg>

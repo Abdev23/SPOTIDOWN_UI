@@ -12,7 +12,7 @@ import './Search.css';
 
 const SearchAlert = ({ message, type }) => {
 
-  // Return icon based on alert type
+  // Render icons based on alert type
   const getIcon = () => {
     switch (type) {
       case 'error':
