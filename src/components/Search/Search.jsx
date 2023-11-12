@@ -21,11 +21,12 @@ const Search3 = () => {
   const accessToken = useConnect(setAlert);
 
   const handleSearchResults = (data) => {
-    if (data ||
+    if (typeof data.id === 'string' ||
+        (data &&
         (data.albums.items.length > 0 ||
         data.artists.items.length > 0 ||
         data.playlists.items.length > 0 ||
-        data.tracks.items.length > 0))
+        data.tracks.items.length > 0)))
     {
       setLoading(false);
       setAlert({ msg: 'Found some music for you!', type: 'success', show: true });
