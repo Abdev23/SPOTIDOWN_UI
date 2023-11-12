@@ -4,7 +4,7 @@ SpotiDown is a web application that uses the Spotify API to fetch music metadata
 
 ## Live Preview
 
-- [SpotiDown_UI](https://spotidownui.netlify.app){:target="_blank"}
+- <a href="https://spotidownui.netlify.app" target="_blank">SpotiDown_UI</a>
 
 ## Features
 
