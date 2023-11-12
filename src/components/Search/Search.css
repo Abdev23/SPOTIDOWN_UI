@@ -58,9 +58,10 @@ SEARCH CSS
 }
 
 .search-separator {
-  background-color: var(--static7);
+  height: 50px;
   width: 2px;
-  height: 60px;
+  background-color: var(--static7);
+  align-self: center;
   border-radius: 2px;
 }
 

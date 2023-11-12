@@ -4,18 +4,21 @@ import { BiSearch } from 'react-icons/bi';
 
 import SearchLoader from './SearchLoader';
 import SearchAlert from './SearchAlert';
+import Card from '../Card/Card';
+import useConnect from '../../hooks/useConnect';
 import './Search.css';
 
 
 const Search2 = () => {
   const [search, setSearch] = useState('');
-  const [accessToken, setAccessToken] = useState('');
+  const [metadata, setMetadata] = useState({});
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
     msg: '',
     type: '',
     show: false
   });
+  const accessToken = useConnect(setAlert);
   
   // handle Search input
   const handleSearch = async () => {
@@ -37,9 +40,9 @@ const Search2 = () => {
 
     setLoading(true);
 
-    // check if the input text is a link or keyword
     if (search.includes('https://open.spotify.com/'))
     {
+      // Handle spotify link
       return;
     }
     else
@@ -61,10 +64,12 @@ const Search2 = () => {
               data.tracks.items.length > 0))
           {
             setLoading(false);
-            setAlert({ msg: 'Founded some music for you!', type: 'success', show: true });
+            setAlert({ msg: 'Found some music for you!', type: 'success', show: true });
             setSearch('');
             console.log('data is full: ', data);
-    
+
+            // Update the logic to handle the search results as needed
+            setMetadata(data);
             return data;
           }
           else
@@ -89,12 +94,13 @@ const Search2 = () => {
           errorMessage = 'Oops! Error occurred while fetching data. Please try again later.';
         }
         setAlert({ msg: errorMessage, type: 'error', show: true });
+        console.error(err);
         throw new Error('Oops! Error occurred while fetching data: ' + err.message);
       }
     }
   }
 
-  // reset the alert component to default state
+  // reset the Alert to default state
   useEffect( () => {
     const resetAlert = setTimeout(() => {
       setAlert({ msg: '', type: '', show: false });
@@ -104,45 +110,6 @@ const Search2 = () => {
       clearTimeout(resetAlert);
     };
   }, [alert])
-
-  // get API access Token
-  useEffect( () => {
-    const authParameters = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: 'grant_type=client_credentials&client_id='
-            + import.meta.env.VITE_CLIENT_ID
-            + '&client_secret='
-            + import.meta.env.VITE_CLIENT_SECRET
-    }
-
-    const Connect = async () => {
-      try
-      {
-        const response = await fetch(
-          'https://accounts.spotify.com/api/token',
-          authParameters
-        );
-        const data = await response.json();
-        setAccessToken(data.access_token);
-        // console.log('access token: ', data.access_token);
-      }
-      catch (err)
-      {
-        setAccessToken('');
-        setAlert({
-          msg: 'OPPS! API CONNECTION ERROR',
-          type: 'error',
-          show: true
-        });
-        throw new Error('OPPS! API CONNECTION ERROR: ' + err.message);
-      }
-    }
-
-    Connect();
-  }, []);
 
   return (
     <div className='search'
@@ -175,7 +142,7 @@ const Search2 = () => {
         
         <button className='search-button'
                 id='search-button'
-                type='submit'
+                type='button'
                 onClick={handleSearch}
         >
           <BiSearch className='search-icon' />
@@ -196,6 +163,9 @@ const Search2 = () => {
       </div>
       
       <div className='search-cards-container'>
+        {
+          metadata && <Card metadata={metadata} />
+        }
       </div>
     </div>
   );
