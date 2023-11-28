@@ -11,7 +11,7 @@ import './Search.css';
 
 const Search3 = () => {
   const [search, setSearch] = useState('');
-  const [metadata, setMetadata] = useState(null);
+  const [metadata, setMetadata] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
     msg: '',
@@ -33,7 +33,19 @@ const Search3 = () => {
       console.log('Data Exist: ', data);
       
       // Update the logic to handle the search results as needed
-      setMetadata(data);
+      if (data.hasOwnProperty('id'))
+      {
+        setMetadata([data])
+      }
+      else
+      {
+        setMetadata([
+          ...data.albums.items,
+          ...data.tracks.items,
+          ...data.artists.items,
+          ...data.playlists.items
+        ]);
+      }
       return data;
     }
     else
@@ -110,7 +122,7 @@ const Search3 = () => {
     if (!search)
     {
       setAlert({ msg: 'Please enter a search query.', type: 'warning', show: true });
-      setMetadata(null);
+      setMetadata([]);
       return;
     }
 
@@ -146,7 +158,7 @@ const Search3 = () => {
     return () => {
       clearTimeout(resetAlert);
     };
-  }, [alert])
+  }, [alert]);
 
   return (
     <div className='search'
@@ -202,9 +214,17 @@ const Search3 = () => {
         }
       </div>
       
-      <div className='search-cards-container'>
+      <div className='search-cards'
+           style={{gridTemplateColumns: metadata.length === 1 ? '1fr' : metadata.length === 2 ? 'repeat(2, 1fr)' : ''}}
+      >
         {
-          metadata && <Card metadata={metadata} />
+          metadata && metadata.map((md, i) => {
+            return (
+              <Card key={i}
+                    md={md}
+              />
+            );
+          })
         }
       </div>
     </div>

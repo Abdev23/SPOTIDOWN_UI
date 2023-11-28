@@ -11,13 +11,13 @@ SEARCH CSS
   width: 100%;
   height: auto;
   padding: 15px;
-  background-color: var(--static3);
+  background-color: var(--static8);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px 1px #0000001a, 0 0 0 1px #0000001a;
+  /* box-shadow: 0 0 20px 1px #0000001a, 0 0 0 1px #0000001a; */
   cursor: auto;
 }
 
@@ -162,5 +162,44 @@ SEARCH-ALERT CSS
 @media screen and (max-width: 700px) {
   .search-alert.show {
     height: 80px;
+  }
+}
+
+
+/*
+================
+SEARCH-CARDS CSS
+================
+*/
+
+/* music cards container */
+.search-cards {
+  /* border: 1px solid var(--primary); */
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+
+  margin: 20px;
+}
+
+.search-cards {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .search-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .search-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .search-cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
